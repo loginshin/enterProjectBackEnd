@@ -21,7 +21,7 @@ class UserService(
 
         // 중복 체크
         if (userRepository.existsByUserId(req.userId)) {
-            throw IllegalArgumentException("Exist Id")
+            throw IllegalArgumentException("DUPLICATE_USER_ID")
         }
 
         val user = UserEntity(
