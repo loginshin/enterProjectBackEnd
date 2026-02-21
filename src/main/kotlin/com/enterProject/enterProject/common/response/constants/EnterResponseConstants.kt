@@ -8,9 +8,7 @@ object EnterResponseConstants {
         ERROR_DUPLICATE("E-0001");
 
         companion object {
-            fun isSuccessCode(code: String): Boolean {
-                return code[0] == 'S'
-            }
+
         }
     }
 }
