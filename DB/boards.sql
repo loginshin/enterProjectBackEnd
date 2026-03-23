@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS boards CASCADE;
 
 CREATE TABLE boards
 (
-    board_key BIGSERIAL NOT NULL,
+    board_key VARCHAR(128) NOT NULL,
     board_title VARCHAR(150) NOT NULL,
     board_contents TEXT,
     create_user_key VARCHAR(128),
@@ -16,7 +16,7 @@ CREATE TABLE boards
 );
 
 COMMENT ON TABLE boards IS '게시판';
-COMMENT ON COLUMN boards.board_key IS '게시판 키(순차)';
+COMMENT ON COLUMN boards.board_key IS '게시판 키(UUID v7)';
 COMMENT ON COLUMN boards.board_title IS '게시판 제목';
 COMMENT ON COLUMN boards.board_contents IS '게시판 내용';
 COMMENT ON COLUMN boards.create_user_key IS '등록자';
