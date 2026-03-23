@@ -1,7 +1,12 @@
 package com.enterProject.enterProject.board.controller;
 
+import com.enterProject.enterProject.board.dto.BoardCreateRequest;
 import com.enterProject.enterProject.board.dto.BoardDTO;
 import com.enterProject.enterProject.board.service.BoardService;
+import com.enterProject.enterProject.common.response.EnterApiResponse;
+import com.enterProject.enterProject.common.response.dto.EnterApiResponseDTO;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,17 +20,16 @@ public class BoardRestController {
     }
 
     @PostMapping
-    public BoardDTO create(
-            @RequestParam String title,
-            @RequestParam String contents
+    public ResponseEntity<EnterApiResponseDTO> create(
+            @Valid @RequestBody BoardCreateRequest request
             ) {
-        String userKey = "TEMP_USER";
-
-        return boardService.create(title, contents, userKey);
+        BoardDTO result = boardService.create(request);
+        return EnterApiResponse.response(result);
     }
 
     @GetMapping("/{id}")
-    public BoardDTO find(@PathVariable String id) {
-        return boardService.findById(id);
+    public ResponseEntity<EnterApiResponseDTO> find(@PathVariable Long id) {
+        BoardDTO result = boardService.findById(id);
+        return EnterApiResponse.response(result);
     }
 }

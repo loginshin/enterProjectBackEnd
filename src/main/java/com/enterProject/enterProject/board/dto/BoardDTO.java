@@ -3,7 +3,7 @@ package com.enterProject.enterProject.board.dto;
 import java.time.LocalDateTime;
 
 public record BoardDTO(
-        String boardId,
+        Long boardKey,
         String boardTitle,
         String boardContents,
         String createUserKey,

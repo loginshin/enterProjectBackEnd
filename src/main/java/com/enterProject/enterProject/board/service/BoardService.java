@@ -1,6 +1,7 @@
 package com.enterProject.enterProject.board.service;
 
 import com.enterProject.enterProject.board.domain.BoardEntity;
+import com.enterProject.enterProject.board.dto.BoardCreateRequest;
 import com.enterProject.enterProject.board.dto.BoardDTO;
 import com.enterProject.enterProject.board.repository.BoardRepository;
 import jakarta.transaction.Transactional;
@@ -17,18 +18,15 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
 
-    public BoardDTO create(
-            String title, String contents, String userKey
-    ) {
-        String id = UUID.randomUUID().toString();
-        BoardEntity entity = new BoardEntity(id, title, contents, userKey);
+    public BoardDTO create(BoardCreateRequest request) {
+        BoardEntity entity = new BoardEntity(request.title(), request.contents(), request.userKey());
         boardRepository.save(entity);
 
         return toDTO(entity);
     }
 
     // TODO : need refactoring
-    public BoardDTO findById(String id) {
+    public BoardDTO findById(Long id) {
 
         BoardEntity entity = boardRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("게시글 없음"));
@@ -38,7 +36,7 @@ public class BoardService {
 
     private BoardDTO toDTO(BoardEntity entity) {
         return new BoardDTO(
-                entity.getBoardId(),
+                entity.getBoardKey(),
                 entity.getBoardTitle(),
                 entity.getBoardContents(),
                 entity.getCreateUserKey(),
