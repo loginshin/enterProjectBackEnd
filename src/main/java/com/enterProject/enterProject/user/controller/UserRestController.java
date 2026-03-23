@@ -21,7 +21,27 @@ public class UserRestController {
         this.userService = userService;
     }
 
-    // 회원 가입
+    /**
+     * 회원 가입
+     * URL: POST /api/users/signup
+     * JSON:
+     * {
+     *   "userId": "user01",
+     *   "userName": "홍길동",
+     *   "password": "password123"
+     * }
+     * Return:
+     * {
+     *   "status": "0000",
+     *   "message": null,
+     *   "data": {
+     *     "userKey": "550e8400-e29b-41d4-a716-446655440000",
+     *     "userId": "user01",
+     *     "userName": "홍길동",
+     *     "email": null
+     *   }
+     * }
+     */
     @PostMapping("/signup")
     public ResponseEntity<EnterApiResponseDTO> signUp(@RequestBody UserSignUpDTO req) {
         UserDTO user = userService.signUp(req);
