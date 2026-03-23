@@ -8,15 +8,25 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import com.github.f4b6a3.uuid.UuidCreator;
+import java.util.UUID;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "boards")
 public class BoardEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "board_key")
-    private Long boardKey;
+    @Column(name = "board_key", length = 36)
+    private String boardKey;
+
+    @PrePersist
+    public void prePersist() {
+        if (this.boardKey == null) {
+            // UUID v7 (Time-based, sortable, and opaque)
+            this.boardKey = UuidCreator.getTimeOrderedEpoch().toString();
+        }
+    }
 
     @Column(name = "board_title", length = 150, nullable = false)
     private String boardTitle;

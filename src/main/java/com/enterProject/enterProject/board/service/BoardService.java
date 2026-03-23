@@ -7,8 +7,6 @@ import com.enterProject.enterProject.board.repository.BoardRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 @Transactional
 public class BoardService {
@@ -18,6 +16,7 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
 
+    @Transactional
     public BoardDTO create(BoardCreateRequest request) {
         BoardEntity entity = new BoardEntity(request.title(), request.contents(), request.userKey());
         boardRepository.save(entity);
@@ -26,9 +25,10 @@ public class BoardService {
     }
 
     // TODO : need refactoring
-    public BoardDTO findById(Long id) {
+    @Transactional
+    public BoardDTO findById(String boardKey) {
 
-        BoardEntity entity = boardRepository.findById(id)
+        BoardEntity entity = boardRepository.findById(boardKey)
                 .orElseThrow(() -> new RuntimeException("게시글 없음"));
 
         return toDTO(entity);

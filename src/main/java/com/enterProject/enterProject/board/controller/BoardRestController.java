@@ -33,7 +33,7 @@ public class BoardRestController {
      *   "status": "0000",
      *   "message": null,
      *   "data": {
-     *     "boardKey": 1,
+     *     "boardKey": "550e8400-e29b-41d4-a716-446655440000",
      *     "boardTitle": "게시글 제목",
      *     "boardContents": "게시글 내용",
      *     "createUserKey": "사용자 키",
@@ -54,12 +54,13 @@ public class BoardRestController {
     /**
      * 게시글 단건 조회
      * URL: GET /api/boards/{id}
-     * Return:
+     * ex : http://localhost:8080/api/boards/019d1adf-e08e-71c3-b06b-74f9edec528d
+     * Return: 예시
      * {
      *   "status": "0000",
      *   "message": null,
      *   "data": {
-     *     "boardKey": 1,
+     *     "boardKey": "550e8400-e29b-41d4-a716-446655440000",
      *     "boardTitle": "게시글 제목",
      *     "boardContents": "게시글 내용",
      *     "createUserKey": "사용자 키",
@@ -69,9 +70,9 @@ public class BoardRestController {
      *   }
      * }
      */
-    @GetMapping("/{id}")
-    public ResponseEntity<EnterApiResponseDTO> find(@PathVariable Long id) {
-        BoardDTO result = boardService.findById(id);
+    @GetMapping("/{key}")
+    public ResponseEntity<EnterApiResponseDTO> find(@PathVariable String boardKey) {
+        BoardDTO result = boardService.findById(boardKey);
         return EnterApiResponse.response(result);
     }
 }
