@@ -28,20 +28,6 @@ public class BoardRestController {
      *   "contents": "게시글 내용",
      *   "userKey": "사용자 키"
      * }
-     * Return:
-     * {
-     *   "status": "0000",
-     *   "message": null,
-     *   "data": {
-     *     "boardKey": "550e8400-e29b-41d4-a716-446655440000",
-     *     "boardTitle": "게시글 제목",
-     *     "boardContents": "게시글 내용",
-     *     "createUserKey": "사용자 키",
-     *     "createDt": "2024-03-23T10:00:00",
-     *     "updateUserKey": "사용자 키",
-     *     "updateDt": "2024-03-23T10:00:00"
-     *   }
-     * }
      */
     @PostMapping
     public ResponseEntity<EnterApiResponseDTO> create(
@@ -53,22 +39,7 @@ public class BoardRestController {
 
     /**
      * 게시글 단건 조회
-     * URL: GET /api/boards/{id}
-     * ex : http://localhost:8080/api/boards/019d1adf-e08e-71c3-b06b-74f9edec528d
-     * Return: 예시
-     * {
-     *   "status": "0000",
-     *   "message": null,
-     *   "data": {
-     *     "boardKey": "550e8400-e29b-41d4-a716-446655440000",
-     *     "boardTitle": "게시글 제목",
-     *     "boardContents": "게시글 내용",
-     *     "createUserKey": "사용자 키",
-     *     "createDt": "2024-03-23T10:00:00",
-     *     "updateUserKey": "사용자 키",
-     *     "updateDt": "2024-03-23T10:00:00"
-     *   }
-     * }
+     * URL: GET /api/boards/{boardKey}
      */
     @GetMapping("/{key}")
     public ResponseEntity<EnterApiResponseDTO> find(@PathVariable String boardKey) {
