@@ -3,6 +3,7 @@ package com.enterProject.enterProject.board.service;
 import com.enterProject.enterProject.board.domain.BoardEntity;
 import com.enterProject.enterProject.board.dto.BoardCreateRequest;
 import com.enterProject.enterProject.board.dto.BoardDTO;
+import com.enterProject.enterProject.board.dto.BoardUpdateRequest;
 import com.enterProject.enterProject.board.repository.BoardRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -19,9 +20,9 @@ public class BoardService {
     @Transactional
     public BoardDTO create(BoardCreateRequest request) {
         BoardEntity entity = new BoardEntity(request.title(), request.contents(), request.userKey());
-        boardRepository.save(entity);
+        BoardEntity savedEntity = boardRepository.save(entity);
 
-        return toDTO(entity);
+        return toDTO(savedEntity);
     }
 
     // TODO : need refactoring
@@ -32,6 +33,24 @@ public class BoardService {
                 .orElseThrow(() -> new RuntimeException("게시글 없음"));
 
         return toDTO(entity);
+    }
+
+    @Transactional
+    public BoardDTO update(String boardKey, BoardUpdateRequest request) {
+        BoardEntity entity = boardRepository.findById(boardKey)
+                .orElseThrow(() -> new RuntimeException("게시글 없음"));
+
+        entity.update(request.title(), request.contents(), request.userKey());
+
+        return toDTO(entity);
+    }
+
+    @Transactional
+    public void delete(String boardKey) {
+        BoardEntity entity = boardRepository.findById(boardKey)
+                .orElseThrow(() -> new RuntimeException("게시글 없음"));
+
+        boardRepository.delete(entity);
     }
 
     private BoardDTO toDTO(BoardEntity entity) {
