@@ -1,7 +1,13 @@
 package com.enterProject.enterProject.board.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,24 +15,17 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.github.f4b6a3.uuid.UuidCreator;
-import java.util.UUID;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "boards")
 public class BoardEntity implements Serializable {
     @Id
     @Column(name = "board_key", length = 36)
     private String boardKey;
-
-    @PrePersist
-    public void prePersist() {
-        if (this.boardKey == null) {
-            // UUID v7 (Time-based, sortable, and opaque)
-            this.boardKey = UuidCreator.getTimeOrderedEpoch().toString();
-        }
-    }
 
     @Column(name = "board_title", length = 150, nullable = false)
     private String boardTitle;
@@ -45,6 +44,14 @@ public class BoardEntity implements Serializable {
 
     @Column(name = "update_dt")
     private LocalDateTime updateDt;
+
+    @PrePersist
+    public void prePersist() {
+        if (this.boardKey == null) {
+            // UUID v7 (Time-based, sortable, and opaque)
+            this.boardKey = UuidCreator.getTimeOrderedEpoch().toString();
+        }
+    }
 
     // 생성(팩토리 느낌)
     public BoardEntity(String title, String contents, String userKey) {
