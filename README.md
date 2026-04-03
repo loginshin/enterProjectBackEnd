@@ -2,6 +2,11 @@
 
 SpringBoot, Kotlin, JPA, QueryDSL, PostgreSQL을 활용한 스터디 및 테스트 프로젝트입니다.
 
+## 라이브러리
+- Snowflake
+- mapstruct
+
+-----
 
 ✅ 게시글 고유 키 변경 (Long -> UUID v7)
 - **변경 이유**: 

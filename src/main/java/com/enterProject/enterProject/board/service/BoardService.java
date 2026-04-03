@@ -1,6 +1,6 @@
 package com.enterProject.enterProject.board.service;
 
-import com.enterProject.enterProject.board.domain.BoardEntity;
+import com.enterProject.enterProject.board.entity.BoardEntity;
 import com.enterProject.enterProject.board.dto.BoardCreateRequest;
 import com.enterProject.enterProject.board.dto.BoardDTO;
 import com.enterProject.enterProject.board.dto.BoardUpdateRequest;
