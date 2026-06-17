@@ -10,3 +10,8 @@ spring:
     hibernate:
       ddl-auto: update
     open-in-view: false
+
+security:
+  jwt:
+    secret: enter-project-local-development-secret-key-change-me
+    access-token-expiration-seconds: 3600

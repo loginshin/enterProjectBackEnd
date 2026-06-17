@@ -1,7 +1,6 @@
 package com.enterProject.enterProject.common.entity;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
@@ -18,9 +17,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @SuperBuilder
 @Getter
-@Entity
-public class BaseEntity {
-    // memo : EntityId ← Snowflake는 엔티티 내부 자동 생성보다 서비스 레이어에서 먼저 생성을 고려
+public abstract class BaseEntity {
 
     @Column(updatable = false)
     @CreatedDate

@@ -1,8 +1,7 @@
 package com.enterProject.enterProject.auth.application.command;
 
-public record SignUpCommand(
+public record LoginCommand(
         String email,
-        String password,
-        String name
+        String password
 ) {
 }
