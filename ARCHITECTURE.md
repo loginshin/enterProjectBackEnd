@@ -1,5 +1,17 @@
 # Architecture guide
 
+## Gradle modules
+
+```text
+EnterBoot  ->  EnterData
+```
+
+- `EnterBoot` is the executable boundary. It contains only the Spring Boot entry
+  point, runtime resources, and its context test.
+- `EnterData` is a library module containing web APIs, security, business rules,
+  persistence flows, domain tests, and database scripts.
+- `EnterData` never depends on `EnterBoot`; the dependency is one-way.
+
 The production domains (`auth`, `board`, and `chat`) use a package-by-feature
 Clean Architecture layout.
 

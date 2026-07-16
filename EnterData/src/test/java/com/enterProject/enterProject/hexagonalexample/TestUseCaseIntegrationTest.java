@@ -4,13 +4,17 @@ import com.enterProject.enterProject.hexagonalexample.application.port.in.TestUs
 import com.enterProject.enterProject.hexagonalexample.domain.TestData;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.enterProject.enterProject.hexagonalexample.adapter.out.persistence.TestPersistenceAdapter;
+import com.enterProject.enterProject.hexagonalexample.application.service.TestService;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-@SpringBootTest
+@DataJpaTest
+@Import({TestService.class, TestPersistenceAdapter.class})
 @Transactional
 class TestUseCaseIntegrationTest {
 
