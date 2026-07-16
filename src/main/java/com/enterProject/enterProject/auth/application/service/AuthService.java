@@ -2,12 +2,12 @@ package com.enterProject.enterProject.auth.application.service;
 
 import com.enterProject.enterProject.auth.application.command.LoginCommand;
 import com.enterProject.enterProject.auth.application.command.SignUpCommand;
-import com.enterProject.enterProject.auth.application.port.in.LoginUseCase;
-import com.enterProject.enterProject.auth.application.port.in.SignUpUseCase;
-import com.enterProject.enterProject.auth.application.port.out.IssueTokenPort;
-import com.enterProject.enterProject.auth.application.port.out.LoadUserPort;
-import com.enterProject.enterProject.auth.application.port.out.PasswordPort;
-import com.enterProject.enterProject.auth.application.port.out.SaveUserPort;
+import com.enterProject.enterProject.auth.application.usecase.LoginUseCase;
+import com.enterProject.enterProject.auth.application.usecase.SignUpUseCase;
+import com.enterProject.enterProject.auth.application.gateway.IssueTokenPort;
+import com.enterProject.enterProject.auth.application.gateway.LoadUserPort;
+import com.enterProject.enterProject.auth.application.gateway.PasswordPort;
+import com.enterProject.enterProject.auth.application.gateway.SaveUserPort;
 import com.enterProject.enterProject.auth.application.result.TokenResult;
 import com.enterProject.enterProject.auth.domain.User;
 import com.enterProject.enterProject.common.utill.SnowflakeIdGenerator;

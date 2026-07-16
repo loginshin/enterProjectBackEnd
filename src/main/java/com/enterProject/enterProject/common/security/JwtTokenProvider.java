@@ -1,6 +1,6 @@
 package com.enterProject.enterProject.common.security;
 
-import com.enterProject.enterProject.auth.application.port.out.IssueTokenPort;
+import com.enterProject.enterProject.auth.application.gateway.IssueTokenPort;
 import com.enterProject.enterProject.auth.application.result.TokenResult;
 import com.enterProject.enterProject.auth.domain.User;
 import com.fasterxml.jackson.core.type.TypeReference;

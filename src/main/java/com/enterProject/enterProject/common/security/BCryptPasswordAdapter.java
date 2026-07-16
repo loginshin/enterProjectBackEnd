@@ -1,6 +1,6 @@
 package com.enterProject.enterProject.common.security;
 
-import com.enterProject.enterProject.auth.application.port.out.PasswordPort;
+import com.enterProject.enterProject.auth.application.gateway.PasswordPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
