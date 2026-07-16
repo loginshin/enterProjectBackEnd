@@ -33,7 +33,9 @@ public class SecurityConfig {
                                 "/index.html",
                                 "/api/v1/auth/signup",
                                 "/api/v1/auth/login",
-                                "/api/hexagonal/tests/**"
+                                "/api/hexagonal/tests/**",
+                                "/api/layered/examples/**",
+                                "/api/clean/examples/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

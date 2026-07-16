@@ -35,4 +35,6 @@ independent of Spring, web, and persistence details.
 `hexagonal` is a small executable CRUD reference that preserves the
 ports-and-adapters layout. It exposes `/api/hexagonal/tests` and uses the
 `hexagonal_tests` table so each architectural role can be followed end to end.
-Its README compares Hexagonal, Layered, and Clean Architecture.
+
+`layered`, `clean`, and `hexagonal` each contain a small CRUD example and a
+short README describing only that package's architecture.
