@@ -1,4 +1,4 @@
-package com.enterProject.enterBoot.layered;
+package com.enterProject.enterBoot.layeredexample;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

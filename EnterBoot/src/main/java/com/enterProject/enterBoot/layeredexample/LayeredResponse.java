@@ -1,4 +1,4 @@
-package com.enterProject.enterBoot.layered;
+package com.enterProject.enterBoot.layeredexample;
 
 import com.enterProject.enterProject.layeredexample.domain.LayeredEntity;
 

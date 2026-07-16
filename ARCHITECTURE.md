@@ -36,5 +36,5 @@ independent of Spring, web, and persistence details.
 ports-and-adapters layout. It exposes `/api/hexagonal/tests` and uses the
 `hexagonal_tests` table so each architectural role can be followed end to end.
 
-`layeredexample`, `cleanexample`, and `hexagonalexample` each contain a small
-CRUD example and a short README describing only that package's architecture.
+`layeredexample`, `simplecleanarchitectureexample`, `cleanarchitectureexample`,
+and `hexagonalexample` each contain a CRUD example and a short README.
