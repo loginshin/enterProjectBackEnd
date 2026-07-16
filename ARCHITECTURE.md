@@ -32,9 +32,9 @@ Dependencies must point inward: presentation and infrastructure may depend on
 application/domain, application may depend on domain, and domain must remain
 independent of Spring, web, and persistence details.
 
-`hexagonal` is a small executable CRUD reference that preserves the
+`hexagonalexample` is a small executable CRUD reference that preserves the
 ports-and-adapters layout. It exposes `/api/hexagonal/tests` and uses the
 `hexagonal_tests` table so each architectural role can be followed end to end.
 
-`layered`, `clean`, and `hexagonal` each contain a small CRUD example and a
-short README describing only that package's architecture.
+`layeredexample`, `cleanexample`, and `hexagonalexample` each contain a small
+CRUD example and a short README describing only that package's architecture.
