@@ -6,8 +6,8 @@
 EnterBoot  ->  EnterData
 ```
 
-- `EnterBoot` is the executable boundary. It contains only the Spring Boot entry
-  point, runtime resources, and its context test.
+- `EnterBoot` is the executable and inbound boundary. It contains the Spring Boot
+  entry point, runtime resources, and web input adapters.
 - `EnterData` is a library module containing web APIs, security, business rules,
   persistence flows, domain tests, and database scripts.
 - `EnterData` never depends on `EnterBoot`; the dependency is one-way.
@@ -32,6 +32,7 @@ Dependencies must point inward: presentation and infrastructure may depend on
 application/domain, application may depend on domain, and domain must remain
 independent of Spring, web, and persistence details.
 
-`hexagonalexample` is a small executable CRUD reference that preserves the
+`hexagonal` is a small executable CRUD reference that preserves the
 ports-and-adapters layout. It exposes `/api/hexagonal/tests` and uses the
 `hexagonal_tests` table so each architectural role can be followed end to end.
+Its README compares Hexagonal, Layered, and Clean Architecture.
