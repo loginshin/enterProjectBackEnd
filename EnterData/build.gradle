@@ -7,7 +7,7 @@ plugins {
 	id 'io.spring.dependency-management'
 }
 
-description = 'Enter business, API, security, and data access flows'
+description = 'Enter business and shared data access flows'
 
 bootJar {
 	enabled = false
