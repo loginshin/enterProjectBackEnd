@@ -2,3 +2,4 @@ rootProject.name = 'enter'
 
 include 'EnterBoot'
 include 'EnterData'
+include 'EnterAuth'
