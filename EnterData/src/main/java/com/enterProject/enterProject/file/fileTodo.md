@@ -1,0 +1,44 @@
+현재 Spring Boot 프로젝트에 아래 TODO를 기준으로 파일 저장 기능을 구현해줘. 먼저 기존 구조와 컨벤션을 조사하고, 구현·테스트까지 완료해.
+
+## TODO
+
+- [ ] 파일 메타데이터와 실제 바이너리 저장소를 분리한다.
+- [ ] DB에는 `fileId`, `userId`, `fileType`, `status`, `expiredAt`만 저장한다.
+- [ ] 파일 ID는 서버에서 생성하고 API에서는 String으로 전달한다.
+- [ ] `FileStatus`를 `ACTIVE`, `INACTIVE`, `PURGING`으로 정의한다.
+- [ ] `FileType` enum에 저장 경로, 최대 크기, 최대 개수, 이미지 Variant, 접근 정책을 통합한다.
+- [ ] 안전한 상대경로 전용 `FilePath` VO를 만들고 path traversal을 차단한다.
+- [ ] `ImageVariant`와 `Scale`, `Fit`, `Square` 리사이즈 정책을 구현한다.
+- [ ] 업로드 이미지를 검증하고 필요한 Variant를 WebP로 생성한다.
+- [ ] 확장자뿐 아니라 실제 파일 내용, 이미지 디코딩 여부, 크기와 해상도도 검증한다.
+- [ ] `FileStorageWriter`, `FileStorageReader`, `FileStorageRemover` Port를 정의한다.
+- [ ] `local` Profile용 로컬 파일 저장 Adapter를 구현한다.
+- [ ] `dev`, `prod` Profile용 AWS S3 Adapter를 구현한다.
+- [ ] S3 인증은 `DefaultCredentialsProvider`를 사용한다.
+- [ ] S3 디렉터리 삭제 시 pagination과 1,000개 단위 bulk delete를 처리한다.
+- [ ] 공개 파일 URL은 Storage Reader에서 계산하고 DB에 URL을 저장하지 않는다.
+- [ ] `files` 테이블과 `(status, expired_at)` 인덱스를 생성한다.
+- [ ] `INACTIVE → ACTIVE` confirm을 소유자·FileType·상태 조건부 UPDATE로 구현한다.
+- [ ] `ACTIVE → INACTIVE` release를 소유자·상태 조건부 UPDATE로 구현한다.
+- [ ] 조건부 UPDATE 결과가 0이면 모호한 Not Found 예외를 발생시킨다.
+- [ ] 직접 업로드는 `ACTIVE`로 저장한다.
+- [ ] 임시 업로드는 만료 시각이 있는 `INACTIVE`로 저장한다.
+- [ ] 비즈니스 엔티티 연결 시 `confirm(userId, fileId, expectedType)`을 호출한다.
+- [ ] 파일 교체 시 새 파일을 먼저 저장하고 기존 파일을 release한다.
+- [ ] 비즈니스 엔티티에는 URL 대신 FileId를 저장한다.
+- [ ] 물리 파일 저장 후 DB 트랜잭션이 롤백되면 저장 파일을 보상 삭제한다.
+- [ ] 보상 삭제 실패가 원래 비즈니스 예외를 덮어쓰지 않도록 로그만 남긴다.
+- [ ] 만료된 INACTIVE 파일을 chunk 단위로 선점하는 purge 로직을 구현한다.
+- [ ] 다중 인스턴스 중복 처리를 막기 위해 row lock과 `SKIP LOCKED`를 사용한다.
+- [ ] 선점한 파일은 `PURGING`으로 변경한 후 DB 트랜잭션 밖에서 물리 삭제한다.
+- [ ] 물리 삭제 성공 건만 DB 메타데이터를 삭제한다.
+- [ ] 삭제 실패 건은 `PURGING`으로 유지하고 다음 실행에서 재시도한다.
+- [ ] 만료 파일 정리 Scheduler를 실행 모듈에 추가한다.
+- [ ] 설정은 record 기반 `@ConfigurationProperties`로 바인딩한다.
+- [ ] 임시 파일 만료 기간, release 유예기간, purge chunk 크기를 설정으로 관리한다.
+- [ ] 사용자 ID는 요청값이 아니라 인증 Principal에서 가져온다.
+- [ ] 외부에서 지정 가능한 FileType을 allowlist로 제한한다.
+- [ ] 기존 공통 예외 계층과 GlobalExceptionHandler를 사용한다.
+- [ ] Local/S3 Adapter, 상태 전환, 소유권, 롤백 보상, purge 동시성 테스트를 작성한다.
+- [ ] 변경 모듈 테스트와 전체 Gradle 테스트를 실행한다.
+- [ ] 완료 후 변경 파일, 상태 전이, 저장소 구성, 테스트 결과와 남은 위험을 보고한다.
