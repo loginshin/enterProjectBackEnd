@@ -1,5 +1,7 @@
 # EnterProject Backend
 
+전체 작업 목록: [EnterProject 전체 TODO](TODO.md)
+
 SpringBoot, Kotlin, JPA, QueryDSL, PostgreSQL을 활용한 스터디 및 테스트 프로젝트입니다.
  
 ## 라이브러리
