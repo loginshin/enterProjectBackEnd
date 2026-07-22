@@ -40,6 +40,21 @@
 - 현재 구현: [Snowflake.java](EnterData/src/main/java/com/enterProject/enterProject/common/utill/Snowflake.java)
 - 현재 Adapter: [SnowflakeIdGenerator.java](EnterData/src/main/java/com/enterProject/enterProject/common/utill/SnowflakeIdGenerator.java)
 
+## Swagger 도입 및 API 명세 정리
+
+- [ ] Swagger(OpenAPI) 라이브러리를 도입하고 각 모듈의 설정을 구성한다.
+- [ ] 애플리케이션 진입점에서 Swagger Docs에 접근할 수 있도록 경로와 보안 예외를 설정한다.
+- [ ] Controller의 요청·응답, 상태 코드, 인증 방식 및 오류 응답을 Swagger Docs 명세로 정리한다.
+- [ ] 실행 환경별 Swagger Docs 공개 범위를 정하고 정상적으로 조회되는지 확인한다.
+
+## DB 사용자 삭제 Function 구현 및 연동
+
+- [ ] DB에 사용자와 연관 데이터를 정책에 맞게 삭제하는 사용자 삭제 Function을 만든다.
+- [ ] 삭제 순서, 외래 키, 트랜잭션 및 실패 시 롤백 정책을 정의한다.
+- [ ] 서버에서 사용자 삭제 Function을 호출하는 로직을 구현한다.
+- [ ] 서버를 통해 실제 사용자 삭제를 호출하고 연관 데이터 처리 결과를 검증한다.
+- [ ] 정상 삭제, 존재하지 않는 사용자, 중복 호출 및 실패 롤백 테스트를 작성한다.
+
 ## 완료 기준
 
 - [ ] 변경한 각 모듈의 테스트를 통과한다.
